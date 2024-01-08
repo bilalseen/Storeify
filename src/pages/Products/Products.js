@@ -1,19 +1,32 @@
-import { SafeAreaView, Text, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { SafeAreaView, Text, TouchableOpacity, FlatList } from 'react-native'
+import React, { useState, useEffect } from 'react'
 import styles from './Products.style'
 
 const Products = ({ navigation }) => {
-    const navigateToDetail = () => {
-        navigation.navigate("DetailScreen")
+
+    const [data, setData] = useState(null)
+
+    const getProducts = async () => {
+        try {
+            const res = await fetch("https://fakestoreapi.com/products")
+            if (!res.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const dataProduct = await res.json()
+            setData(dataProduct);
+        } catch (err) {
+            alert("Error message: " + err.message)
+        }
     }
+
+    useEffect(() => {
+        getProducts();
+    }, [])
+
+
     return (
         <SafeAreaView style={styles.container}>
-            <Text>Products Page...</Text>
-            <TouchableOpacity onPress={navigateToDetail}>
-                <Text style={{ color: "blue", fontSize: 18, marginVertical: 20, borderWidth: 1, borderColor: "black", paddingVertical: 5, paddingHorizontal: 10, borderRadius: 10 }}>
-                    Go to detail page
-                </Text>
-            </TouchableOpacity>
+            <FlatList data={data} renderItem={({ item }) => <Text>{item.title}</Text>} />
         </SafeAreaView>
     )
 }
