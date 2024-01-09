@@ -1,4 +1,4 @@
-import { SafeAreaView, Text, TouchableOpacity, FlatList } from "react-native";
+import { SafeAreaView, Text, FlatList } from "react-native";
 import React, { useState, useEffect } from "react";
 import styles from "./Products.style";
 import LottieView from "lottie-react-native";
@@ -11,13 +11,26 @@ const Products = ({ navigation }) => {
   const [productsApi, setProductsApi] = useState(
     "https://fakestoreapi.com/products"
   );
-  const { loading, data, error } = useFetch(productsApi);
+  const [categoryApi, setCategoryApi] = useState(
+    "https://fakestoreapi.com/products/categories"
+  );
+
+  const {
+    loading: loadingProducts,
+    data: dataProducts,
+    error: errorProducts,
+  } = useFetch(productsApi);
+  const {
+    loading: loadingCategories,
+    data: dataCategories,
+    error: errorCategories,
+  } = useFetch(categoryApi);
 
   const renderItem = ({ item }) => <ProductCard product={item} />;
 
   useEffect(() => {
-    setList(data);
-  }, [data]);
+    setList(dataProducts);
+  }, [dataProducts, dataCategories]);
 
   function handleSearch(text) {
     const filteredList = data.filter((product) => {
@@ -29,7 +42,7 @@ const Products = ({ navigation }) => {
     setList(filteredList);
   }
 
-  if (loading) {
+  if (loadingProducts) {
     return (
       <LottieView
         source={require("../../../assets/loading.json")}
@@ -39,7 +52,7 @@ const Products = ({ navigation }) => {
     );
   }
 
-  if (error) {
+  if (errorProducts) {
     return (
       <LottieView
         source={require("../../../assets/error.json")}
@@ -55,6 +68,11 @@ const Products = ({ navigation }) => {
       <SearchBar
         placeHolder={"Search..."}
         onSearch={(text) => handleSearch(text)}
+      />
+      <FlatList
+        horizontal
+        data={dataCategories}
+        renderItem={({ item }) => <Text>{item}</Text>}
       />
       <FlatList
         data={list}
