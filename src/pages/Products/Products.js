@@ -36,6 +36,7 @@ const Products = ({ navigation }) => {
       <FlatList
         data={data}
         renderItem={({ item }) => <ProductCard product={item} />}
+        showsVerticalScrollIndicator={false}
       />
     </SafeAreaView>
   );
