@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./Products.style";
 import LottieView from "lottie-react-native";
 import useFetch from "../../hooks/useFetch/useFetch";
-import Product from "../../components/Product";
+import ProductCard from "../../components/ProductCard";
 
 const Products = ({ navigation }) => {
   const [roductsApi, setProductsApi] = useState(
@@ -35,7 +35,7 @@ const Products = ({ navigation }) => {
     <SafeAreaView style={styles.container}>
       <FlatList
         data={data}
-        renderItem={({ item }) => <Product product={item} />}
+        renderItem={({ item }) => <ProductCard product={item} />}
       />
     </SafeAreaView>
   );
