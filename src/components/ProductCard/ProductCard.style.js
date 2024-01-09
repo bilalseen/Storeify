@@ -8,6 +8,7 @@ export default styles = StyleSheet.create({
     margin: 10,
     backgroundColor: "white",
     maxWidth: 200,
+    padding: 10,
   },
   image: {
     width: 100,
@@ -17,12 +18,17 @@ export default styles = StyleSheet.create({
   text_container: {
     flex: 1,
     justifyContent: "space-between",
-    padding: 10,
+    marginVertical: 10,
   },
   title: {
-    fontSize: 14,
+    fontSize: 15,
+    fontWeight: "500",
+    textAlign: "center",
+    padding: 5,
   },
   price: {
     textAlign: "center",
+    marginTop: 5,
+    fontWeight: "700",
   },
 });
