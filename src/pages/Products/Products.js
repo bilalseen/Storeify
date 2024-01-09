@@ -4,12 +4,30 @@ import styles from "./Products.style";
 import LottieView from "lottie-react-native";
 import useFetch from "../../hooks/useFetch/useFetch";
 import ProductCard from "../../components/ProductCard";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 const Products = ({ navigation }) => {
-  const [roductsApi, setProductsApi] = useState(
+  const [list, setList] = useState(null);
+  const [productsApi, setProductsApi] = useState(
     "https://fakestoreapi.com/products"
   );
-  const { loading, data, error } = useFetch(roductsApi);
+  const { loading, data, error } = useFetch(productsApi);
+
+  const renderItem = ({ item }) => <ProductCard product={item} />;
+
+  useEffect(() => {
+    setList(data);
+  }, [data]);
+
+  function handleSearch(text) {
+    const filteredList = data.filter((product) => {
+      const searchedText = text.toLowerCase();
+      const productTitle = product.title.toLowerCase();
+      return productTitle.indexOf(searchedText) > -1;
+    });
+
+    setList(filteredList);
+  }
 
   if (loading) {
     return (
@@ -33,9 +51,14 @@ const Products = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>Storeify</Text>
+      <SearchBar
+        placeHolder={"Search..."}
+        onSearch={(text) => handleSearch(text)}
+      />
       <FlatList
-        data={data}
-        renderItem={({ item }) => <ProductCard product={item} />}
+        data={list}
+        renderItem={renderItem}
         showsVerticalScrollIndicator={false}
       />
     </SafeAreaView>
