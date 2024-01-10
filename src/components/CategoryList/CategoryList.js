@@ -1,12 +1,24 @@
 import { View, Text, TouchableWithoutFeedback } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./CategoryList.style";
 
 const CategoryList = ({ categories }) => {
+  const [containerStyle, setContainerStyle] = useState(styles.container);
+  const [textStyle, setTextStyle] = useState(styles.container);
+
+  const handleOnPress = () => {
+    {
+      containerStyle == styles.container
+        ? (setContainerStyle(styles.containerActive),
+          setTextStyle(styles.textActive))
+        : (setContainerStyle(styles.container), setTextStyle(styles.text));
+    }
+  };
+
   return (
-    <TouchableWithoutFeedback>
-      <View style={styles.container}>
-        <Text style={styles.text}>{categories}</Text>
+    <TouchableWithoutFeedback onPress={handleOnPress}>
+      <View style={containerStyle}>
+        <Text style={textStyle}>{categories}</Text>
       </View>
     </TouchableWithoutFeedback>
   );
