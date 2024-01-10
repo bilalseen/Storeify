@@ -5,6 +5,7 @@ import LottieView from "lottie-react-native";
 import useFetch from "../../hooks/useFetch/useFetch";
 import ProductCard from "../../components/ProductCard";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import CategoryList from "../../components/CategoryList/CategoryList";
 
 const Products = ({ navigation }) => {
   const [list, setList] = useState(null);
@@ -25,8 +26,9 @@ const Products = ({ navigation }) => {
     data: dataCategories,
     error: errorCategories,
   } = useFetch(categoryApi);
+  const categoriesRenderItem = ({ item }) => <CategoryList categories={item} />;
 
-  const renderItem = ({ item }) => <ProductCard product={item} />;
+  const productRenderItem = ({ item }) => <ProductCard product={item} />;
 
   useEffect(() => {
     setList(dataProducts);
@@ -71,12 +73,14 @@ const Products = ({ navigation }) => {
       />
       <FlatList
         horizontal
+        showsHorizontalScrollIndicator={false}
+        style={{ height: 100, marginVertical: 20, marginHorizontal: 20 }}
         data={dataCategories}
-        renderItem={({ item }) => <Text>{item}</Text>}
+        renderItem={categoriesRenderItem}
       />
       <FlatList
         data={list}
-        renderItem={renderItem}
+        renderItem={productRenderItem}
         showsVerticalScrollIndicator={false}
       />
     </SafeAreaView>
