@@ -35,7 +35,7 @@ const Products = ({ navigation }) => {
   }, [dataProducts, dataCategories]);
 
   function handleSearch(text) {
-    const filteredList = data.filter((product) => {
+    const filteredList = dataProducts.filter((product) => {
       const searchedText = text.toLowerCase();
       const productTitle = product.title.toLowerCase();
       return productTitle.indexOf(searchedText) > -1;
