@@ -119,7 +119,7 @@ const Products = ({ navigation }) => {
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
-        style={{ height: 100, marginVertical: 20, marginHorizontal: 20 }}
+        style={{ height: 75, marginTop: 20, marginHorizontal: 20 }}
         data={dataCategories}
         renderItem={categoriesRenderItem}
       />

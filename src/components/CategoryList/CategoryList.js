@@ -4,16 +4,13 @@ import styles from "./CategoryList.style";
 
 const CategoryList = ({ categories, onPress }) => {
   const [containerStyle, setContainerStyle] = useState(styles.container);
-  const [textStyle, setTextStyle] = useState(styles.container);
+  const [textStyle, setTextStyle] = useState(styles.text);
 
   const handleOnPress = () => {
-    console.log(categories);
-    {
-      containerStyle == styles.container
-        ? (setContainerStyle(styles.containerActive),
-          setTextStyle(styles.textActive))
-        : (setContainerStyle(styles.container), setTextStyle(styles.text));
-    }
+    containerStyle == styles.container
+      ? (setContainerStyle(styles.containerActive),
+        setTextStyle(styles.textActive))
+      : (setContainerStyle(styles.container), setTextStyle(styles.text));
     onPress(categories);
   };
 
