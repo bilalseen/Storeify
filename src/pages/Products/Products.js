@@ -15,6 +15,10 @@ const Products = ({ navigation }) => {
   const [categoryApi, setCategoryApi] = useState(
     "https://fakestoreapi.com/products/categories"
   );
+  const [filterCategories, setFilterCategories] = useState(
+    "https://fakestoreapi.com/products/category"
+  );
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
   const {
     loading: loadingProducts,
@@ -26,25 +30,66 @@ const Products = ({ navigation }) => {
     data: dataCategories,
     error: errorCategories,
   } = useFetch(categoryApi);
-  const categoriesRenderItem = ({ item }) => <CategoryList categories={item} />;
+
+  const {
+    loading: loadingFilteredCategories,
+    data: dataFilteredCategories,
+    error: errorFilteredCategories,
+  } = useFetch(`${filterCategories}/jewelery`);
+
+  const handleFilteredCategories = (category) => {
+    // Kategori zaten seçili ise kaldır, değilse ekle
+    const updatedCategories = selectedCategories.includes(category)
+      ? selectedCategories.filter((c) => c !== category)
+      : [...selectedCategories, category];
+
+    setSelectedCategories(updatedCategories);
+
+    // Filtreleme işlemini yapacak bir fonksiyon çağırabilirsiniz
+    if (updatedCategories.length === 0) {
+      filterProductsByCategories(dataCategories);
+    } else {
+      filterProductsByCategories(updatedCategories);
+    }
+  };
+
+  const filterProductsByCategories = (selectedCategories) => {
+    // Seçilen kategorilere göre ürünleri filtrele ve setList ile güncelle
+    const filteredList = dataProducts.filter((product) => {
+      return selectedCategories.includes(product.category);
+    });
+
+    setList(filteredList);
+  };
+
+  const categoriesRenderItem = ({ item }) => (
+    <CategoryList
+      categories={item}
+      onPress={() => handleFilteredCategories(item)}
+    />
+  );
 
   const productRenderItem = ({ item }) => <ProductCard product={item} />;
 
   useEffect(() => {
-    setList(dataProducts);
-  }, [dataProducts, dataCategories]);
+    if (dataProducts && dataCategories && dataFilteredCategories) {
+      setList(dataProducts);
+    }
+  }, [dataProducts, dataCategories, dataFilteredCategories]);
 
   function handleSearch(text) {
-    const filteredList = dataProducts.filter((product) => {
-      const searchedText = text.toLowerCase();
-      const productTitle = product.title.toLowerCase();
-      return productTitle.indexOf(searchedText) > -1;
-    });
+    if (dataProducts) {
+      const filteredList = dataProducts.filter((product) => {
+        const searchedText = text.toLowerCase();
+        const productTitle = product.title.toLowerCase();
+        return productTitle.indexOf(searchedText) > -1;
+      });
 
-    setList(filteredList);
+      setList(filteredList);
+    }
   }
 
-  if (loadingProducts) {
+  if (loadingProducts && loadingCategories && loadingFilteredCategories) {
     return (
       <LottieView
         source={require("../../../assets/loading.json")}
@@ -54,7 +99,7 @@ const Products = ({ navigation }) => {
     );
   }
 
-  if (errorProducts) {
+  if (errorProducts || errorCategories || errorFilteredCategories) {
     return (
       <LottieView
         source={require("../../../assets/error.json")}

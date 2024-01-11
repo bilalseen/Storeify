@@ -1,5 +1,5 @@
 import { SafeAreaView, View, Text, Image } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ProductCard.style";
 
 const Product = ({ product }) => {
