@@ -7,10 +7,10 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import styles from "./ProductCard.style";
+import RatingStars from "../RatingStars";
 
 const ProductCard = ({ product, onSelect }) => {
   const maxLength = 30;
-
   return (
     <TouchableWithoutFeedback onPress={onSelect}>
       <View style={styles.safeContainer}>
@@ -19,6 +19,7 @@ const ProductCard = ({ product, onSelect }) => {
         </View>
         <View style={styles.inlineContainer}>
           <Image style={styles.productImage} source={{ uri: product.image }} />
+          <RatingStars starRate={product.rating.rate} starSize={14} />
           <Text
             style={styles.productTitle}
             numberOfLines={2}

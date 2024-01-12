@@ -24,7 +24,7 @@ export default StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 10,
     marginVertical: 10,
-    gap: 20,
+    gap: 10,
   },
   productImage: {
     minHeight: 150,
