@@ -63,7 +63,13 @@ const Products = ({ navigation }) => {
     />
   );
 
-  const productRenderItem = ({ item }) => <ProductCard product={item} />;
+  const handleProductSelect = (id) => {
+    navigation.navigate("DetailScreen", { id });
+  };
+
+  const productRenderItem = ({ item }) => (
+    <ProductCard product={item} onSelect={() => handleProductSelect(item.id)} />
+  );
 
   useEffect(() => {
     if (dataProducts && dataCategories) {
