@@ -32,6 +32,10 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     textAlign: "center",
   },
+  ratingContainer: {
+    alignItems: "center",
+    marginVertical: 10,
+  },
   productRating: {
     textAlign: "center",
   },

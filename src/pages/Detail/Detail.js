@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./Detail.style";
 import useFetch from "../../hooks/useFetch/useFetch";
 import LottieView from "lottie-react-native";
-
+import RatingStars from "../../components/RatingStars/RatingStars";
 const Detail = ({ route }) => {
   const { id } = route.params;
   const { loading, data, error } = useFetch(
@@ -36,7 +36,9 @@ const Detail = ({ route }) => {
       <View style={styles.productDetailsContainer}>
         <View style={styles.titleAndRatingContainer}>
           <Text style={styles.productTitle}>{data["title"]}</Text>
-          <Text style={styles.productRating}>{data["rating"]["rate"]}</Text>
+          <View style={styles.ratingContainer}>
+            <RatingStars starRate={data["rating"]["rate"]} starSize={30} />
+          </View>
         </View>
         <Text style={styles.productDescription}>{data["description"]}</Text>
         <Text style={styles.productPrice}>$ {data["price"]}</Text>
