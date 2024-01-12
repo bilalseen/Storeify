@@ -1,34 +1,39 @@
 import { StyleSheet } from "react-native";
 
-export default styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    borderWidth: 1,
-    borderRadius: 10,
-    margin: 10,
+export default StyleSheet.create({
+  safeContainer: {
+    width: 200,
+    minHeight: 250,
     backgroundColor: "white",
-    maxWidth: 200,
+    marginVertical: 5,
+    borderRadius: 8,
+    paddingBottom: 20,
+  },
+  topContainer: {
+    alignItems: "flex-end",
+  },
+  priceText: {
+    textAlign: "center",
+    backgroundColor: "orange",
+    borderBottomLeftRadius: 10,
+    padding: 5,
+    borderTopRightRadius: 8,
+    minWidth: 50,
+  },
+  inlineContainer: {
+    alignItems: "center",
+    paddingHorizontal: 10,
+    marginVertical: 10,
+    gap: 20,
+  },
+  productImage: {
+    minHeight: 150,
+    width: 150,
+    resizeMode: "contain",
+    backgroundColor: "white",
     padding: 10,
   },
-  image: {
-    width: 100,
-    minHeight: 100,
-    resizeMode: "contain",
-  },
-  text_container: {
-    flex: 1,
-    justifyContent: "space-between",
-    marginVertical: 10,
-  },
-  title: {
-    fontSize: 15,
-    fontWeight: "500",
+  productTitle: {
     textAlign: "center",
-    padding: 5,
-  },
-  price: {
-    textAlign: "center",
-    marginTop: 5,
-    fontWeight: "700",
   },
 });
