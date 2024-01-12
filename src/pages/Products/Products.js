@@ -31,12 +31,6 @@ const Products = ({ navigation }) => {
     error: errorCategories,
   } = useFetch(categoryApi);
 
-  const {
-    loading: loadingFilteredCategories,
-    data: dataFilteredCategories,
-    error: errorFilteredCategories,
-  } = useFetch(`${filterCategories}/jewelery`);
-
   const handleFilteredCategories = (category) => {
     // Kategori zaten seçili ise kaldır, değilse ekle
     const updatedCategories = selectedCategories.includes(category)
@@ -72,10 +66,10 @@ const Products = ({ navigation }) => {
   const productRenderItem = ({ item }) => <ProductCard product={item} />;
 
   useEffect(() => {
-    if (dataProducts && dataCategories && dataFilteredCategories) {
+    if (dataProducts && dataCategories) {
       setList(dataProducts);
     }
-  }, [dataProducts, dataCategories, dataFilteredCategories]);
+  }, [dataProducts, dataCategories]);
 
   function handleSearch(text) {
     if (dataProducts) {
@@ -89,7 +83,7 @@ const Products = ({ navigation }) => {
     }
   }
 
-  if (loadingProducts && loadingCategories && loadingFilteredCategories) {
+  if (loadingProducts && loadingCategories) {
     return (
       <LottieView
         source={require("../../../assets/loading.json")}
@@ -99,7 +93,7 @@ const Products = ({ navigation }) => {
     );
   }
 
-  if (errorProducts || errorCategories || errorFilteredCategories) {
+  if (errorProducts || errorCategories) {
     return (
       <LottieView
         source={require("../../../assets/error.json")}
@@ -110,23 +104,24 @@ const Products = ({ navigation }) => {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Storeify</Text>
+    <SafeAreaView style={styles.mainContainer}>
+      <Text style={styles.mainTitle}>Storeify</Text>
       <SearchBar
-        placeHolder={"Search..."}
+        placeHolder={"Search..."} //
         onSearch={(text) => handleSearch(text)}
       />
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
-        style={{ height: 75, marginTop: 20, marginHorizontal: 20 }}
         data={dataCategories}
         renderItem={categoriesRenderItem}
+        style={styles.categoryFlatList}
       />
       <FlatList
         data={list}
         renderItem={productRenderItem}
         showsVerticalScrollIndicator={false}
+        style={styles.productListFlatList}
       />
     </SafeAreaView>
   );
