@@ -9,7 +9,6 @@ const Detail = ({ route }) => {
   const { loading, data, error } = useFetch(
     `https://fakestoreapi.com/products/${id}`
   );
-  console.log(data);
   if (error) {
     return (
       <LottieView
