@@ -2,7 +2,6 @@ import { SafeAreaView, Text, Image, View } from "react-native";
 import React from "react";
 import styles from "./Detail.style";
 import useFetch from "../../hooks/useFetch/useFetch";
-import LottieView from "lottie-react-native";
 import RatingStars from "../../components/RatingStars/RatingStars";
 import LoadingAnimation from "../../components/LoadingAnimation";
 import ErrorAnimation from "../../components/ErrorAnimation";
