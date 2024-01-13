@@ -5,10 +5,19 @@ const styles = StyleSheet.create({
     width: 200,
     minHeight: 250,
     backgroundColor: "white",
-    marginVertical: 5,
+    marginVertical: 10,
     borderRadius: 8,
     padding: 20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 5,
+      height: 20,
+    },
+    shadowOpacity: 0.75,
+    shadowRadius: 3.84,
+    elevation: 6,
   },
+
   imageContainer: {
     alignItems: "center",
     marginBottom: 20,
