@@ -1,39 +1,33 @@
 import { StyleSheet } from "react-native";
 
-export default StyleSheet.create({
-  safeContainer: {
+const styles = StyleSheet.create({
+  container: {
     width: 200,
     minHeight: 250,
     backgroundColor: "white",
     marginVertical: 5,
     borderRadius: 8,
-    paddingBottom: 20,
+    padding: 20,
   },
-  topContainer: {
-    alignItems: "flex-end",
+  imageContainer: {
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  image: {
+    width: 150,
+    height: 150,
+    resizeMode: "contain",
+  },
+  productContent: {
+    gap: 5,
+  },
+  title: {
+    fontSize: 12,
   },
   priceText: {
-    textAlign: "center",
-    backgroundColor: "orange",
-    borderBottomLeftRadius: 10,
-    padding: 5,
-    borderTopRightRadius: 8,
-    minWidth: 50,
-  },
-  inlineContainer: {
-    alignItems: "center",
-    paddingHorizontal: 10,
-    marginVertical: 10,
-    gap: 10,
-  },
-  productImage: {
-    minHeight: 150,
-    width: 150,
-    resizeMode: "contain",
-    backgroundColor: "white",
-    padding: 10,
-  },
-  productTitle: {
-    textAlign: "center",
+    fontSize: 12,
+    fontWeight: "600",
   },
 });
+
+export default styles;

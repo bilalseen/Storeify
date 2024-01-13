@@ -5,30 +5,25 @@ import {
   Image,
   TouchableWithoutFeedback,
 } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import styles from "./ProductCard.style";
 import RatingStars from "../RatingStars";
 
 const ProductCard = ({ product, onSelect }) => {
-  const maxLength = 30;
   return (
     <TouchableWithoutFeedback onPress={onSelect}>
-      <View style={styles.safeContainer}>
-        <View style={styles.topContainer}>
-          <Text style={styles.priceText}>{product.price}$</Text>
+      <View style={styles.container}>
+        <View style={styles.imageContainer}>
+          <Image style={styles.image} source={{ uri: product.image }} />
         </View>
-        <View style={styles.inlineContainer}>
-          <Image style={styles.productImage} source={{ uri: product.image }} />
-          <RatingStars starRate={product.rating.rate} starSize={14} />
-          <Text
-            style={styles.productTitle}
-            numberOfLines={2}
-            ellipsizeMode="tail"
-          >
-            {product.title.length > maxLength
-              ? `${product.title.substring(0, maxLength)}...`
-              : product.title}
+        <View style={styles.productContent}>
+          <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">
+            {product.title}
           </Text>
+
+          <RatingStars starRate={product.rating.rate} starSize={14} />
+
+          <Text style={styles.priceText}>{product.price}$</Text>
         </View>
       </View>
     </TouchableWithoutFeedback>
