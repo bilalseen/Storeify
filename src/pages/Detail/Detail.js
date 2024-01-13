@@ -4,29 +4,20 @@ import styles from "./Detail.style";
 import useFetch from "../../hooks/useFetch/useFetch";
 import LottieView from "lottie-react-native";
 import RatingStars from "../../components/RatingStars/RatingStars";
+import LoadingAnimation from "../../components/LoadingAnimation";
+import ErrorAnimation from "../../components/ErrorAnimation";
+
 const Detail = ({ route }) => {
   const { id } = route.params;
   const { loading, data, error } = useFetch(
     `https://fakestoreapi.com/products/${id}`
   );
   if (error) {
-    return (
-      <LottieView
-        source={require("../../../assets/error.json")}
-        autoPlay
-        loop
-      />
-    );
+    return <ErrorAnimation />;
   }
 
   if (loading) {
-    return (
-      <LottieView
-        source={require("../../../assets/loading.json")}
-        autoPlay
-        loop
-      />
-    );
+    return <LoadingAnimation />;
   }
 
   return (

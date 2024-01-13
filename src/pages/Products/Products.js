@@ -1,11 +1,12 @@
 import { SafeAreaView, Text, FlatList } from "react-native";
 import React, { useState, useEffect } from "react";
 import styles from "./Products.style";
-import LottieView from "lottie-react-native";
 import useFetch from "../../hooks/useFetch/useFetch";
 import ProductCard from "../../components/ProductCard";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import CategoryList from "../../components/CategoryList/CategoryList";
+import LoadingAnimation from "../../components/LoadingAnimation";
+import ErrorAnimation from "../../components/ErrorAnimation";
 
 const Products = ({ navigation }) => {
   const [list, setList] = useState(null);
@@ -90,23 +91,11 @@ const Products = ({ navigation }) => {
   }
 
   if (loadingProducts && loadingCategories) {
-    return (
-      <LottieView
-        source={require("../../../assets/loading.json")}
-        autoPlay
-        loop
-      />
-    );
+    return <LoadingAnimation />;
   }
 
   if (errorProducts || errorCategories) {
-    return (
-      <LottieView
-        source={require("../../../assets/error.json")}
-        autoPlay
-        loop
-      />
-    );
+    return <ErrorAnimation />;
   }
 
   return (

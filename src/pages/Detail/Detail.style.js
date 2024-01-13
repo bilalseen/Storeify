@@ -3,12 +3,17 @@ import { StyleSheet, Dimensions } from "react-native";
 const deviceSize = Dimensions.get("window");
 
 const styles = StyleSheet.create({
-  mainContainer: {},
+  mainContainer: {
+    flex: 1,
+    backgroundColor: "white",
+    alignItems: "center",
+  },
   productImage: {
-    width: deviceSize.width,
+    width: (deviceSize.width / 3) * 2,
     height: deviceSize.height / 3,
     resizeMode: "contain",
     backgroundColor: "white",
+    marginVertical: 30,
   },
   productDetailsContainer: {
     backgroundColor: "#fff",
