@@ -1,14 +1,14 @@
 import { SafeAreaView, Text, FlatList } from "react-native";
 import React, { useState, useEffect } from "react";
-import styles from "./Products.style";
+import styles from "./Home.style";
 import useFetch from "../../hooks/useFetch/useFetch";
 import ProductCard from "../../components/ProductCard";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import CategoryList from "../../components/CategoryList/CategoryList";
+import SearchBar from "../../components/SearchBar";
+import CategoryList from "../../components/CategoryList";
 import LoadingAnimation from "../../components/LoadingAnimation";
 import ErrorAnimation from "../../components/ErrorAnimation";
 
-const Products = ({ navigation }) => {
+const Home = ({ navigation }) => {
   const [list, setList] = useState(null);
   const [productsApi, setProductsApi] = useState(
     "https://fakestoreapi.com/products"
@@ -122,4 +122,4 @@ const Products = ({ navigation }) => {
   );
 };
 
-export default Products;
+export default Home;
