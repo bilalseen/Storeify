@@ -20,7 +20,5 @@ export default styles = StyleSheet.create({
     marginTop: 20,
     marginHorizontal: 20,
   },
-  productListFlatList: {
-    marginBottom: 50,
-  },
+  productListFlatList: {},
 });
