@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Home from "../pages/Home";
-import Favourites from "../pages/Favourites";
+import Favorite from "../pages/Favorite";
 import Profile from "../pages/Profile";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
@@ -16,7 +16,7 @@ function TabNavigator() {
 
           if (route.name === "Home") {
             iconName = focused ? "home" : "home";
-          } else if (route.name === "Favourites") {
+          } else if (route.name === "Favorite") {
             iconName = focused ? "favorite" : "favorite";
           } else if (route.name === "Profile") {
             iconName = focused ? "person" : "person-outline";
@@ -35,8 +35,8 @@ function TabNavigator() {
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name="Favourites"
-        component={Favourites}
+        name="Favorites"
+        component={Favorite}
         options={{ headerShown: false }}
       />
       <Tab.Screen

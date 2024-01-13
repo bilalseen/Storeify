@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import React from "react";
-import styles from "./Favourites.style";
+import styles from "./Favorite.style";
 
 const Favourites = () => {
   return (
