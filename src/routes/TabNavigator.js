@@ -16,7 +16,7 @@ function TabNavigator() {
 
           if (route.name === "Home") {
             iconName = focused ? "home" : "home";
-          } else if (route.name === "Favorite") {
+          } else if (route.name === "Favorites") {
             iconName = focused ? "favorite" : "favorite";
           } else if (route.name === "Profile") {
             iconName = focused ? "person" : "person-outline";
