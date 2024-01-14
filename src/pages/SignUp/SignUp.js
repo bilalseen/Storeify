@@ -13,7 +13,7 @@ const SignUp = ({ navigation }) => {
       <WelcomeAnimation />
       <SignUpInputForm />
       <TouchableWithoutFeedback onPress={navigateToSignIn}>
-        <Text>Do you have a account? Sign in</Text>
+        <Text style={styles.text}>Do you have an account? Register</Text>
       </TouchableWithoutFeedback>
     </View>
   );
