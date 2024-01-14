@@ -1,6 +1,7 @@
 import { View, Text, Button, TextInput } from "react-native";
 import React from "react";
 import { Formik } from "formik";
+import CustomTextInput from "../CustomTextInput";
 
 import styles from "./UserInputForm.style";
 
@@ -12,29 +13,29 @@ const UserInputForm = () => {
     >
       {({ handleChange, handleBlur, handleSubmit, values }) => {
         <View>
-          <TextInput
+          <CustomTextInput
             onChangeText={handleChange("firstName")}
             onBlur={handleBlur("firstName")}
             value={values.firstName}
             placeholder="First Name"
           />
-          <TextInput
+          <CustomTextInput
             onChangeText={handleChange("lastName")}
             onBlur={handleBlur("lastName")}
             value={values.lastName}
-            placeholder="Last Name"
+            placeholder={"Last Name"}
           />
-          <TextInput
+          <CustomTextInput
             onChangeText={handleChange("email")}
             onBlur={handleBlur("email")}
             value={values.email}
-            placeholder="Email "
+            placeholder={"Email "}
           />
-          <TextInput
+          <CustomTextInput
             onChangeText={handleChange("password")}
             onBlur={handleBlur("password")}
             value={values.password}
-            placeholder="Password"
+            placeholder={"Password"}
           />
         </View>;
       }}
