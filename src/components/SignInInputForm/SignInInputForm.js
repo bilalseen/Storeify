@@ -26,7 +26,7 @@ const SignInInputForm = () => {
             placeholder={"Password"}
             secureTextEntry={true}
           />
-          <Button placeholder={"Sign In"} />
+          <Button text={"Sign up"} />
           <GoogleAuthButton />
         </View>
       )}
