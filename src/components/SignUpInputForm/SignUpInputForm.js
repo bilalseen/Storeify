@@ -3,6 +3,7 @@ import React from "react";
 import { Formik } from "formik";
 import CustomTextInput from "../CustomTextInput";
 import Button from "../Button";
+import GoogleAuthButton from "../../components/GoogleAuthButton";
 
 import styles from "./SignUpInputForm.style";
 
@@ -41,6 +42,7 @@ const SignUpInputForm = () => {
             secureTextEntry={true}
           />
           <Button text={"Sign Up"} />
+          <GoogleAuthButton />
         </View>
       )}
     </Formik>
