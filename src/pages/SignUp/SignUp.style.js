@@ -8,4 +8,8 @@ export default styles = StyleSheet.create({
     backgroundColor: "white",
     gap: 20,
   },
+  text: {
+    marginTop: 50,
+    fontSize: 14,
+  },
 });
