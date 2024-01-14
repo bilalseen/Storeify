@@ -1,1 +1,1 @@
-export { defaul } from "./SignInInputForm";
+export { default } from "./SignInInputForm";
