@@ -2,6 +2,7 @@ import { View } from "react-native";
 import React from "react";
 import { Formik } from "formik";
 import CustomTextInput from "../CustomTextInput";
+import Button from "../Button";
 
 import styles from "./SignUpInputForm.style";
 
@@ -39,6 +40,7 @@ const SignUpInputForm = () => {
             placeholder={"Password"}
             secureTextEntry={true}
           />
+          <Button text={"Sign Up"} />
         </View>
       )}
     </Formik>
