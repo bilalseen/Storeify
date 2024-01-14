@@ -5,7 +5,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   buttonContainer: {
     width: 240,
-    height: 48,
+    height: 50,
     paddingVertical: 5,
     paddingHorizontal: 10,
     backgroundColor: "#3498db",
