@@ -13,7 +13,7 @@ const SignUpInputForm = () => {
       onSubmit={() => null}
     >
       {({ handleChange, handleBlur, handleSubmit, values }) => (
-        <View>
+        <View style={styles.inputContainer}>
           <CustomTextInput
             onChangeText={handleChange("firstName")}
             onBlur={handleBlur("firstName")}
