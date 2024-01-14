@@ -6,5 +6,6 @@ export default styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "white",
     gap: 20,
+    paddingTop: 50,
   },
 });
