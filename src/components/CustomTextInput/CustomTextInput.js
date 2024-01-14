@@ -3,7 +3,14 @@ import React from "react";
 
 import styles from "./CustomTextInput.style";
 
-const CustomTextInput = ({ onChangeText, onBlur, value, placeholder }) => {
+const CustomTextInput = ({
+  onChangeText,
+  onBlur,
+  value,
+  placeholder,
+  secureTextEntry,
+  keyboardType,
+}) => {
   return (
     <View style={styles.container}>
       <TextInput
@@ -12,6 +19,8 @@ const CustomTextInput = ({ onChangeText, onBlur, value, placeholder }) => {
         onBlur={onBlur}
         value={value}
         placeholder={placeholder}
+        secureTextEntry={secureTextEntry}
+        keyboardType={keyboardType}
       />
     </View>
   );

@@ -30,12 +30,14 @@ const UserInputForm = () => {
             onBlur={handleBlur("email")}
             value={values.email}
             placeholder={"Email "}
+            keyboardType={"email-address"}
           />
           <CustomTextInput
             onChangeText={handleChange("password")}
             onBlur={handleBlur("password")}
             value={values.password}
             placeholder={"Password"}
+            secureTextEntry={true}
           />
         </View>
       )}
