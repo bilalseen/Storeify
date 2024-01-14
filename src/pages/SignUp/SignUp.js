@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import React from "react";
-import UserInputForm from "../../components/UserInputForm";
+import SignUpInputForm from "../../components/SignUpInputForm";
 import Button from "../../components/Button";
 import GoogleAuthButton from "../../components/GoogleAuthButton";
 import WelcomeAnimation from "../../components/WelcomeAnimation";
@@ -10,7 +10,7 @@ const SignUp = () => {
   return (
     <View style={styles.container}>
       <WelcomeAnimation />
-      <UserInputForm />
+      <SignUpInputForm />
       <Button />
       <GoogleAuthButton />
     </View>

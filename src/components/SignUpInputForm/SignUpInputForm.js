@@ -3,9 +3,9 @@ import React from "react";
 import { Formik } from "formik";
 import CustomTextInput from "../CustomTextInput";
 
-import styles from "./UserInputForm.style";
+import styles from "./SignUpInputForm.style";
 
-const UserInputForm = () => {
+const SignUpInputForm = () => {
   return (
     <Formik
       initialValues={{ firstName: "", lastName: "", email: "", password: "" }}
@@ -45,4 +45,4 @@ const UserInputForm = () => {
   );
 };
 
-export default UserInputForm;
+export default SignUpInputForm;
