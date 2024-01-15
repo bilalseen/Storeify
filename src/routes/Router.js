@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AuthManager from "../services/AuthManager";
 
 import TabNavigator from "./TabNavigator";
 import Detail from "../pages/Detail";
@@ -10,7 +11,7 @@ import SignUp from "../pages/SignUp";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [user, setUser] = useState(null);
+  const user = AuthManager();
 
   return (
     <NavigationContainer>
