@@ -11,5 +11,6 @@ export default styles = StyleSheet.create({
   text: {
     marginTop: 50,
     fontSize: 14,
+    padding: 10,
   },
 });
