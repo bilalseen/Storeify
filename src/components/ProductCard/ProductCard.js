@@ -8,11 +8,15 @@ import {
 import React from "react";
 import styles from "./ProductCard.style";
 import RatingStars from "../RatingStars";
+import FavoriteButton from "../FavoriteButton";
 
 const ProductCard = ({ product, onSelect }) => {
   return (
     <TouchableWithoutFeedback onPress={onSelect}>
       <View style={styles.container}>
+        <View style={styles.favoriteContainer}>
+          <FavoriteButton />
+        </View>
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={{ uri: product.image }} />
         </View>

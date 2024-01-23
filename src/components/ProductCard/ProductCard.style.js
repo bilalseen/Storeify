@@ -18,6 +18,10 @@ const styles = StyleSheet.create({
     elevation: 6,
   },
 
+  favoriteContainer: {
+    alignItems: "flex-end",
+  },
+
   imageContainer: {
     alignItems: "center",
     marginBottom: 20,
